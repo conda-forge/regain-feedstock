@@ -12,15 +12,15 @@ source:
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   host:
     - pip
-    - python >=3.6
+    - python {{ python_min }}
 
   run:
-    - python >=3.6
+    - python >={{ python_min }}
     - numpy >=1.8.2
     - scikit-learn >=0.17
 
@@ -29,6 +29,7 @@ test:
     - regain
   requires:
     - pip
+    - python {{ python_min }}
   commands:
     - pip check
 
